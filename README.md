@@ -1,7 +1,13 @@
 # Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike using a barcoded lentiviral platform
 Study by Bernadeta Dadonaite and Jesse Bloom.
 
-For documentation of the analysis, see [https://dms-vep.github.io/SARS-CoV-2_Omicron_BA.1_spike_DMS/](https://dms-vep.github.io/SARS-CoV-2_Omicron_BA.1_spike_DMS/).
+Measures the functional effects of mutations and escape from the following antibodies:
+ - 5-7
+ - Ly-CoV1404
+ - CC67.105
+ - CC9.104
+
+For documentation of the analysis, see [https://dms-vep.github.io/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs](https://dms-vep.github.io/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs).
 
 ## Organization of this repo
 
