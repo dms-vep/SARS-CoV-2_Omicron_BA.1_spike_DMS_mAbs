@@ -1,0 +1,60 @@
+# ======================================================== #
+#                                                          #
+#     Edit the information in this configuration file      #
+#                                                          #
+# ======================================================== #
+
+# ====== Info applying to the whole variant library ====== #
+organism: severe acute respiratory syndrome coronavirus 2
+strain: Omicron BA.1
+isolation_source: plasmid
+collection_date: 2022
+geographic_location: USA
+
+# ======== Info for Illumina barcodes BioSamples ======== #
+barcode_runs: 
+  
+  # Path to the barcoded runs csv file that will go into the BioSample
+  file_path: ../data/barcode_runs.csv
+  
+  # Edit this data that goes into the SRA metadata table for the BioSample
+  accession: SAMN12345678
+  sample_id_columns: [virus_batch, sample_type, antibody, antibody_concentration, replicate]
+  title_prefix: Full Spike glycoprotein DMS illumina barcode sequencing for
+  description: PCR of barcodes from glycoprotein variants
+  strategy: AMPLICON
+  source: SYNTHETIC
+  selection: PCR
+  layout: single
+  platform: ILLUMINA
+  model: Illumina HiSeq 2500
+
+  # Meaningful BioSample specific folder name for FTP upload
+  ftp_subfolder: omicron_BA1_barcodes
+
+# ========== Info for PacBio library BioSample ========== #
+pacbio_runs:
+  
+  # Path to the pacbio runs that will be included in the BioSample
+  file_path: ../data/PacBio_runs.csv
+ 
+  # This data goes into the SRA metadata table
+  accession: SAMN12341234
+  title_prefix: Full Spike glycoprotein PacBio CCSs linking variants to barcodes for library
+  description: PacBio CCSs linking variants to barcodes
+  strategy: AMPLICON
+  source: SYNTHETIC
+  selection: Restriction Digest
+  layout: single
+  platform: PACBIO_SMRT
+  model: Sequel
+
+  # Meaningful BioSample specific folder name for FTP upload
+  ftp_subfolder: omicron_BA1_pacbio
+
+# =========== Info for uploading to SRA via FTP =========== #
+# These come from the SRA FTP upload instructions.
+ftp_username: subftp
+ftp_account_folder: uploads/something_or_another
+
+  

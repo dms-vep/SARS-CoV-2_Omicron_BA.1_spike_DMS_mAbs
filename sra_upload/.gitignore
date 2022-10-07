@@ -1,0 +1,3 @@
+*.tar
+ftp_password.txt
+** __pycache__/
