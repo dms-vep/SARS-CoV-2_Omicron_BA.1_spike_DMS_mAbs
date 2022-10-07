@@ -16,5 +16,5 @@ This structure is in keeping with the scheme used in Tyler's and Allie's Yeast D
 
 ## Instructions
 
-To upload your samples to the [SRA]((https://www.ncbi.nlm.nih.gov/sra), follow along with the code and instructions in the [instructions.ipynb](instructions.ipynb) Jupyter notebook. This notebook will walk you through how to configure this directory, interact with the [SRA]((https://www.ncbi.nlm.nih.gov/sra), and prepare your sequencing runs. 
+To upload your samples to the [SRA](https://www.ncbi.nlm.nih.gov/sra), follow along with the code and instructions in the [instructions.ipynb](instructions.ipynb) Jupyter notebook. This notebook will walk you through how to configure this directory, interact with the [SRA](https://www.ncbi.nlm.nih.gov/sra), and prepare your sequencing runs. 
 
