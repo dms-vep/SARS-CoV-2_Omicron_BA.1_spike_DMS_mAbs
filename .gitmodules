@@ -1,0 +1,6 @@
+[submodule "dms-vep-pipeline"]
+	path = dms-vep-pipeline
+	url = https://github.com/dms-vep/dms-vep-pipeline
+[submodule "SARS2-mut-rates"]
+	path = SARS2-mut-rates
+	url = https://github.com/jbloomlab/SARS2-mut-rates

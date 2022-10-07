@@ -1,0 +1,34 @@
+
+#SARS-CoV-2 variant used in this analysis
+variant: Omicron_BA.1
+
+# location of mutation count data on CoVsurver:
+mutation_count_url: https://mendel.bii.a-star.edu.sg/METHODS/corona/current/MUTATIONS/hCoV-19_Human_2019_WuhanWIV04/hcov19_Spike_mutations_table.html
+
+# location of positive selection data
+site_selection_url: https://raw.githubusercontent.com/spond/SARS-CoV-2-variation/master/windowed-sites-fel-2021-07.csv
+site_selection_p_cutoff: 0.01  # consider sites with positive selection at P < this
+site_selection_min_time_windows: 3  # must be selected in at least this many time windows
+
+# mutation filters
+gisaid_mutation_count_filter: 16
+usher_count_filter: 21
+deletion_count_filter: 300
+
+#lookup table for variant sequence renumbering
+reference_lookup: reference_sequences/reference_sequence_position_lookup.csv
+
+#Usher
+UShER_dir: results/UShER_SARS-CoV-2
+UShER_tree: results/UShER_SARS-CoV-2/public-latest.all.masked.pb
+UShER_tree_nwk_gz: results/UShER_SARS-CoV-2/public-latest.all.nwk.gz
+UShER_tree_nwk: results/UShER_SARS-CoV-2/public-latest.all.nwk
+UShER_ref: results/UShER_SARS-CoV-2/NC_045512.2.fa
+UShER_gtf: results/UShER_SARS-CoV-2/ncbiGenes.gtf
+UShER_annotated_subs: results/UShER_SARS-CoV-2/annotated_subs.tsv
+
+#custom_primers
+custom_primers: custom_primers/custom_primers.csv
+custom_primers_NNS: custom_primers/custom_primers_NNS.csv
+custom_primers_paired_NNS: custom_primers/custom_primers_paired_NNS.csv
+

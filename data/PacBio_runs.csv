@@ -1,0 +1,6 @@
+﻿library,run,fastq
+Lib-1,220531,/fh/fast/bloom_j/SR/ngs/pacbio/220524_Bloom/Bernadeta-Cell4/fastx_files/demultiplex.bc1009_BAK8A_OA--bc1009_BAK8A_OA.hifi_reads.fastq.gz
+Lib-1,220710,/fh/fast/bloom_j/SR/ngs/pacbio/220708_Bernadeta/m64272e_220710_151404.bc1009_BAK8A_OA--bc1009_BAK8A_OA.fq.gz
+Lib-1,220711,/fh/fast/bloom_j/SR/ngs/pacbio/220708_Bernadeta/m64272e_220711_150307.bc1009_BAK8A_OA--bc1009_BAK8A_OA.fq.gz
+Lib-2,220629,/fh/fast/bloom_j/SR/ngs/pacbio/220623_Bernadeta/BA1_A-Cell1/m64272e_220624_162416.hifi_reads.fastq.gz
+Lib-3,220629,/fh/fast/bloom_j/SR/ngs/pacbio/220623_Bernadeta/BA1_B-Cell2/m64272e_220625_161250.hifi_reads.fastq.gz

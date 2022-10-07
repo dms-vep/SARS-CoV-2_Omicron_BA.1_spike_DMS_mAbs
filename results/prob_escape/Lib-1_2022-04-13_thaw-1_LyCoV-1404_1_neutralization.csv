@@ -1,0 +1,16 @@
+library,antibody_sample,no-antibody_sample,n_aa_substitutions,antibody_neut_standard_count,no-antibody_neut_standard_count,antibody_count,no-antibody_count,prob_escape_uncensored,prob_escape
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_0.654_1,2022-04-13_thaw-1_no-antibody_control_1,0,384064,6889,1344401,2006368,0.01202,0.01202
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_0.654_1,2022-04-13_thaw-1_no-antibody_control_1,1,384064,6889,2134953,2608192,0.01468,0.01468
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_0.654_1,2022-04-13_thaw-1_no-antibody_control_1,2,384064,6889,1841138,1844559,0.0179,0.0179
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_0.654_1,2022-04-13_thaw-1_no-antibody_control_1,3,384064,6889,1049700,881390,0.02136,0.02136
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_0.654_1,2022-04-13_thaw-1_no-antibody_control_1,4,384064,6889,736861,496711,0.02661,0.02661
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_10.464_1,2022-04-13_thaw-1_no-antibody_control_1,0,554604,6889,741175,2006368,0.004589,0.004589
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_10.464_1,2022-04-13_thaw-1_no-antibody_control_1,1,554604,6889,1230703,2608192,0.005861,0.005861
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_10.464_1,2022-04-13_thaw-1_no-antibody_control_1,2,554604,6889,1116185,1844559,0.007517,0.007517
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_10.464_1,2022-04-13_thaw-1_no-antibody_control_1,3,554604,6889,665430,881390,0.009378,0.009378
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_10.464_1,2022-04-13_thaw-1_no-antibody_control_1,4,554604,6889,501514,496711,0.01254,0.01254
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_2.616_1,2022-04-13_thaw-1_no-antibody_control_1,0,494162,6889,1135779,2006368,0.007892,0.007892
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_2.616_1,2022-04-13_thaw-1_no-antibody_control_1,1,494162,6889,1831237,2608192,0.009788,0.009788
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_2.616_1,2022-04-13_thaw-1_no-antibody_control_1,2,494162,6889,1623982,1844559,0.01227,0.01227
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_2.616_1,2022-04-13_thaw-1_no-antibody_control_1,3,494162,6889,932676,881390,0.01475,0.01475
+Lib-1,2022-04-13_thaw-1_antibody_LyCoV-1404_2.616_1,2022-04-13_thaw-1_no-antibody_control_1,4,494162,6889,661500,496711,0.01857,0.01857

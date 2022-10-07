@@ -1,0 +1,4 @@
+library,antibody_sample,no-antibody_sample,antibody,antibody_concentration,antibody_count,antibody_frac,no-antibody_count,no-antibody_frac
+Lib-2,2022-06-22_thaw-1_antibody_CC67.105_52.5_1,2022-06-22_thaw-1_no-antibody_control_1,CC67.105,52.5,675120,0.05585,232578,0.003534
+Lib-2,2022-06-22_thaw-1_antibody_CC67.105_210.0_1,2022-06-22_thaw-1_no-antibody_control_1,CC67.105,210,1071013,0.08506,232578,0.003534
+Lib-2,2022-06-22_thaw-1_antibody_CC67.105_420.0_1,2022-06-22_thaw-1_no-antibody_control_1,CC67.105,420,1063051,0.09248,232578,0.003534

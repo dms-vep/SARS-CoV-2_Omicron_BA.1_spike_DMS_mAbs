@@ -1,0 +1,4 @@
+library,antibody_sample,no-antibody_sample,antibody,antibody_concentration,antibody_count,antibody_frac,no-antibody_count,no-antibody_frac
+Lib-2,2022-06-22_thaw-1_antibody_LyCoV-1404_0.654_1,2022-06-22_thaw-1_no-antibody_control_1,LyCoV-1404,0.654,3203636,0.1072,232578,0.003534
+Lib-2,2022-06-22_thaw-1_antibody_LyCoV-1404_10.464_1,2022-06-22_thaw-1_no-antibody_control_1,LyCoV-1404,10.46,1935735,0.2005,232578,0.003534
+Lib-2,2022-06-22_thaw-1_antibody_LyCoV-1404_2.616_1,2022-06-22_thaw-1_no-antibody_control_1,LyCoV-1404,2.616,1376747,0.1185,232578,0.003534

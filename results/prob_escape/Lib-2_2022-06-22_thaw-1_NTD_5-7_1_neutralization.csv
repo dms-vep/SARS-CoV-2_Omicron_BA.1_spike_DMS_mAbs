@@ -1,0 +1,11 @@
+library,antibody_sample,no-antibody_sample,n_aa_substitutions,antibody_neut_standard_count,no-antibody_neut_standard_count,antibody_count,no-antibody_count,prob_escape_uncensored,prob_escape
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_150.0_1,2022-06-22_thaw-1_no-antibody_control_1,0,249498,232578,2792198,16707349,0.1558,0.1558
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_150.0_1,2022-06-22_thaw-1_no-antibody_control_1,1,249498,232578,3699690,21757588,0.1585,0.1585
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_150.0_1,2022-06-22_thaw-1_no-antibody_control_1,2,249498,232578,2682577,15391637,0.1625,0.1625
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_150.0_1,2022-06-22_thaw-1_no-antibody_control_1,3,249498,232578,1327515,7523364,0.1645,0.1645
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_150.0_1,2022-06-22_thaw-1_no-antibody_control_1,4,249498,232578,792313,4196043,0.176,0.176
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_300.0_1,2022-06-22_thaw-1_no-antibody_control_1,0,227410,232578,2460416,16707349,0.1506,0.1506
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_300.0_1,2022-06-22_thaw-1_no-antibody_control_1,1,227410,232578,3250727,21757588,0.1528,0.1528
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_300.0_1,2022-06-22_thaw-1_no-antibody_control_1,2,227410,232578,2339635,15391637,0.1555,0.1555
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_300.0_1,2022-06-22_thaw-1_no-antibody_control_1,3,227410,232578,1151174,7523364,0.1565,0.1565
+Lib-2,2022-06-22_thaw-1_antibody_NTD_5-7_300.0_1,2022-06-22_thaw-1_no-antibody_control_1,4,227410,232578,685493,4196043,0.1671,0.1671

@@ -1,0 +1,1331 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Validation neutralization assays versus polyclonal fits &#8212; Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike using a barcoded lentiviral platform against RBD, NTD, and S2 antibodies  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Compare functional effects of mutations to other data" href="compare_muteffects.html" />
+    <link rel="prev" title="Antibody-escape averaged across replicates" href="avg_antibody_escape.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<section id="Validation-neutralization-assays-versus-polyclonal-fits">
+<h1>Validation neutralization assays versus <code class="docutils literal notranslate"><span class="pre">polyclonal</span></code> fits<a class="headerlink" href="#Validation-neutralization-assays-versus-polyclonal-fits" title="Permalink to this headline">¶</a></h1>
+<p>Compare actual measured neutralization values for specific mutants to the <code class="docutils literal notranslate"><span class="pre">polyclonal</span></code> fits.</p>
+<p>Import Python modules:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">yaml</span>
+</pre></div>
+</div>
+</div>
+<p>Read configuration and validation assay measurements:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">validation_ic50s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;validation_ic50s&quot;</span><span class="p">],</span> <span class="n">na_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">validation_ic50s</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>antibody</th>
+      <th>aa_substitutions</th>
+      <th>measured IC50</th>
+      <th>lower_bound</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LyCoV-1404</td>
+      <td></td>
+      <td>0.00187</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LyCoV-1404</td>
+      <td>F486L</td>
+      <td>0.00143</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LyCoV-1404</td>
+      <td>N439Y</td>
+      <td>1.12000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LyCoV-1404</td>
+      <td>K444N</td>
+      <td>4.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LyCoV-1404</td>
+      <td>S446T</td>
+      <td>0.48500</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LyCoV-1404</td>
+      <td>G447D</td>
+      <td>4.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LyCoV-1404</td>
+      <td>P499H</td>
+      <td>4.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CC67.105</td>
+      <td></td>
+      <td>2.19000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CC67.105</td>
+      <td>D1146N</td>
+      <td>300.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CC67.105</td>
+      <td>D1153Y</td>
+      <td>300.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>CC67.105</td>
+      <td>F1156L</td>
+      <td>300.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>CC67.105</td>
+      <td>D1163R</td>
+      <td>9.43000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NTD_5-7</td>
+      <td></td>
+      <td>0.28000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>NTD_5-7</td>
+      <td>G103F</td>
+      <td>96.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>NTD_5-7</td>
+      <td>L176K</td>
+      <td>96.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>NTD_5-7</td>
+      <td>S172N</td>
+      <td>96.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>CC9.104</td>
+      <td></td>
+      <td>2.34000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>CC9.104</td>
+      <td>D1146N</td>
+      <td>2.90000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>CC9.104</td>
+      <td>D1153Y</td>
+      <td>300.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>CC9.104</td>
+      <td>F1156L</td>
+      <td>269.00000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>CC9.104</td>
+      <td>D1163R</td>
+      <td>28.60000</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Now get the predictions by the averaged <code class="docutils literal notranslate"><span class="pre">polyclonal</span></code> model fits:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_vs_prediction</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">antibody</span><span class="p">,</span> <span class="n">antibody_df</span> <span class="ow">in</span> <span class="n">validation_ic50s</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;antibody&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;escape_dir&quot;</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">antibody</span><span class="si">}</span><span class="s2">.pickle&quot;</span><span class="p">),</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">validation_vs_prediction</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">icXX</span><span class="p">(</span><span class="n">antibody_df</span><span class="p">))</span>
+
+<span class="n">validation_vs_prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">validation_vs_prediction</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">validation_vs_prediction</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>antibody</th>
+      <th>aa_substitutions</th>
+      <th>measured IC50</th>
+      <th>lower_bound</th>
+      <th>mean_IC50</th>
+      <th>median_IC50</th>
+      <th>std_IC50</th>
+      <th>n_models</th>
+      <th>frac_models</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CC67.105</td>
+      <td></td>
+      <td>2.19000</td>
+      <td>False</td>
+      <td>2.465804</td>
+      <td>2.465804</td>
+      <td>0.200788</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CC67.105</td>
+      <td>D1146N</td>
+      <td>300.00000</td>
+      <td>True</td>
+      <td>1468.569818</td>
+      <td>1468.569818</td>
+      <td>648.994727</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CC67.105</td>
+      <td>D1153Y</td>
+      <td>300.00000</td>
+      <td>True</td>
+      <td>1232.814936</td>
+      <td>1232.814936</td>
+      <td>900.657655</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CC67.105</td>
+      <td>D1163R</td>
+      <td>9.43000</td>
+      <td>False</td>
+      <td>13.646795</td>
+      <td>13.646795</td>
+      <td>0.084466</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CC67.105</td>
+      <td>F1156L</td>
+      <td>300.00000</td>
+      <td>True</td>
+      <td>768.075469</td>
+      <td>768.075469</td>
+      <td>281.559387</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CC9.104</td>
+      <td></td>
+      <td>2.34000</td>
+      <td>False</td>
+      <td>6.545884</td>
+      <td>6.545884</td>
+      <td>1.483351</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CC9.104</td>
+      <td>D1146N</td>
+      <td>2.90000</td>
+      <td>False</td>
+      <td>10.638997</td>
+      <td>10.638997</td>
+      <td>4.709676</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CC9.104</td>
+      <td>D1153Y</td>
+      <td>300.00000</td>
+      <td>True</td>
+      <td>404.286520</td>
+      <td>404.286520</td>
+      <td>159.859789</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CC9.104</td>
+      <td>D1163R</td>
+      <td>28.60000</td>
+      <td>False</td>
+      <td>49.436653</td>
+      <td>49.436653</td>
+      <td>6.927173</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CC9.104</td>
+      <td>F1156L</td>
+      <td>269.00000</td>
+      <td>False</td>
+      <td>579.525276</td>
+      <td>579.525276</td>
+      <td>72.243821</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LyCoV-1404</td>
+      <td></td>
+      <td>0.00187</td>
+      <td>False</td>
+      <td>0.014724</td>
+      <td>0.011228</td>
+      <td>0.008491</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LyCoV-1404</td>
+      <td>F486L</td>
+      <td>0.00143</td>
+      <td>False</td>
+      <td>0.011964</td>
+      <td>0.009337</td>
+      <td>0.007061</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>LyCoV-1404</td>
+      <td>G447D</td>
+      <td>4.00000</td>
+      <td>True</td>
+      <td>21.311019</td>
+      <td>8.213625</td>
+      <td>28.776157</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LyCoV-1404</td>
+      <td>K444N</td>
+      <td>4.00000</td>
+      <td>True</td>
+      <td>6.623210</td>
+      <td>1.338305</td>
+      <td>11.132054</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>LyCoV-1404</td>
+      <td>N439Y</td>
+      <td>1.12000</td>
+      <td>False</td>
+      <td>6.436479</td>
+      <td>1.279219</td>
+      <td>11.179901</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LyCoV-1404</td>
+      <td>P499H</td>
+      <td>4.00000</td>
+      <td>True</td>
+      <td>43.618055</td>
+      <td>2.720276</td>
+      <td>82.627223</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>LyCoV-1404</td>
+      <td>S446T</td>
+      <td>0.48500</td>
+      <td>False</td>
+      <td>1.278914</td>
+      <td>0.674567</td>
+      <td>1.431229</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NTD_5-7</td>
+      <td></td>
+      <td>0.28000</td>
+      <td>False</td>
+      <td>26.914560</td>
+      <td>26.914560</td>
+      <td>1.835849</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NTD_5-7</td>
+      <td>G103F</td>
+      <td>96.00000</td>
+      <td>True</td>
+      <td>222.142356</td>
+      <td>222.142356</td>
+      <td>49.373198</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NTD_5-7</td>
+      <td>L176K</td>
+      <td>96.00000</td>
+      <td>True</td>
+      <td>320.491383</td>
+      <td>320.491383</td>
+      <td>85.772741</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>NTD_5-7</td>
+      <td>S172N</td>
+      <td>96.00000</td>
+      <td>True</td>
+      <td>312.404917</td>
+      <td>312.404917</td>
+      <td>109.658037</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Now plot the results. We will plot the <strong>median</strong> across the replicate <code class="docutils literal notranslate"><span class="pre">polyclonal</span></code> fits to different deep mutational scanning replicates. This is an interactive plot that you can mouse over for details:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_chart</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">validation_vs_prediction</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
+            <span class="s2">&quot;measured IC50&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;measured IC50 (ug/ml)&quot;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span>
+            <span class="s2">&quot;median_IC50&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;predicted IC50 (arbitrary units)&quot;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s2">&quot;antibody&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;lower_bound&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;lower bound&quot;</span><span class="p">),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.3g&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">validation_vs_prediction</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">float</span>
+            <span class="k">else</span> <span class="n">c</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">validation_vs_prediction</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_circle</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">configure_axis</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">corr_chart</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/fh/fast/bloom_j/computational_notebooks/jbloom/2022/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/.snakemake/conda/c868d227b3eb59ac260085a8db96c8f9/lib/python3.9/site-packages/altair/utils/core.py:317: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for col_name, dtype in df.dtypes.iteritems():
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div id="altair-viz-58e517577da141ea8343437204f480a8"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-58e517577da141ea8343437204f480a8") {
+      outputDiv = document.getElementById("altair-viz-58e517577da141ea8343437204f480a8");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@5.2.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.2.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-c77530e3d1feed1a1a401fa752bb76bd"}, "mark": {"type": "circle", "filled": true, "opacity": 0.6, "size": 60}, "encoding": {"color": {"field": "lower_bound", "title": "lower bound", "type": "nominal"}, "facet": {"columns": 4, "field": "antibody", "title": null, "type": "nominal"}, "tooltip": [{"field": "antibody", "type": "nominal"}, {"field": "aa_substitutions", "type": "nominal"}, {"field": "measured IC50", "format": ".3g", "type": "quantitative"}, {"field": "lower_bound", "type": "nominal"}, {"field": "mean_IC50", "format": ".3g", "type": "quantitative"}, {"field": "median_IC50", "format": ".3g", "type": "quantitative"}, {"field": "std_IC50", "format": ".3g", "type": "quantitative"}, {"field": "n_models", "type": "quantitative"}, {"field": "frac_models", "format": ".3g", "type": "quantitative"}], "x": {"field": "measured IC50", "scale": {"type": "log"}, "title": "measured IC50 (ug/ml)", "type": "quantitative"}, "y": {"field": "median_IC50", "scale": {"type": "log"}, "title": "predicted IC50 (arbitrary units)", "type": "quantitative"}}, "height": 150, "resolve": {"scale": {"x": "independent", "y": "independent"}}, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.2.0.json", "datasets": {"data-c77530e3d1feed1a1a401fa752bb76bd": [{"antibody": "CC67.105", "aa_substitutions": "", "measured IC50": 2.19, "lower_bound": false, "mean_IC50": 2.4658039941211123, "median_IC50": 2.4658039941211123, "std_IC50": 0.20078790740054578, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC67.105", "aa_substitutions": "D1146N", "measured IC50": 300.0, "lower_bound": true, "mean_IC50": 1468.5698183408585, "median_IC50": 1468.5698183408585, "std_IC50": 648.9947273971013, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC67.105", "aa_substitutions": "D1153Y", "measured IC50": 300.0, "lower_bound": true, "mean_IC50": 1232.814935508453, "median_IC50": 1232.814935508453, "std_IC50": 900.6576547917194, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC67.105", "aa_substitutions": "D1163R", "measured IC50": 9.43, "lower_bound": false, "mean_IC50": 13.646795268146565, "median_IC50": 13.646795268146565, "std_IC50": 0.08446638830535805, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC67.105", "aa_substitutions": "F1156L", "measured IC50": 300.0, "lower_bound": true, "mean_IC50": 768.0754691861293, "median_IC50": 768.0754691861293, "std_IC50": 281.55938711687554, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC9.104", "aa_substitutions": "", "measured IC50": 2.34, "lower_bound": false, "mean_IC50": 6.545883926356828, "median_IC50": 6.545883926356828, "std_IC50": 1.4833512940713451, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC9.104", "aa_substitutions": "D1146N", "measured IC50": 2.9, "lower_bound": false, "mean_IC50": 10.638997318896083, "median_IC50": 10.638997318896083, "std_IC50": 4.709676289540103, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC9.104", "aa_substitutions": "D1153Y", "measured IC50": 300.0, "lower_bound": true, "mean_IC50": 404.2865201942077, "median_IC50": 404.2865201942077, "std_IC50": 159.85978883141905, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC9.104", "aa_substitutions": "D1163R", "measured IC50": 28.6, "lower_bound": false, "mean_IC50": 49.43665262935296, "median_IC50": 49.43665262935296, "std_IC50": 6.9271725737013705, "n_models": 2, "frac_models": 1.0}, {"antibody": "CC9.104", "aa_substitutions": "F1156L", "measured IC50": 269.0, "lower_bound": false, "mean_IC50": 579.5252761210431, "median_IC50": 579.5252761210431, "std_IC50": 72.24382058545726, "n_models": 2, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "", "measured IC50": 0.00187, "lower_bound": false, "mean_IC50": 0.014723799379162121, "median_IC50": 0.011228289296761854, "std_IC50": 0.008491073199375402, "n_models": 4, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "F486L", "measured IC50": 0.00143, "lower_bound": false, "mean_IC50": 0.011964115112827276, "median_IC50": 0.009337152226103568, "std_IC50": 0.007061072363753525, "n_models": 4, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "G447D", "measured IC50": 4.0, "lower_bound": true, "mean_IC50": 21.311018995468725, "median_IC50": 8.213624904415209, "std_IC50": 28.776157496424194, "n_models": 4, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "K444N", "measured IC50": 4.0, "lower_bound": true, "mean_IC50": 6.623210255826082, "median_IC50": 1.3383054045081364, "std_IC50": 11.132053953064146, "n_models": 4, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "N439Y", "measured IC50": 1.12, "lower_bound": false, "mean_IC50": 6.436479021305984, "median_IC50": 1.27921906466762, "std_IC50": 11.17990132454281, "n_models": 4, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "P499H", "measured IC50": 4.0, "lower_bound": true, "mean_IC50": 43.61805537903177, "median_IC50": 2.720275682121668, "std_IC50": 82.62722338180252, "n_models": 4, "frac_models": 1.0}, {"antibody": "LyCoV-1404", "aa_substitutions": "S446T", "measured IC50": 0.485, "lower_bound": false, "mean_IC50": 1.2789135523122885, "median_IC50": 0.6745665519014975, "std_IC50": 1.4312291572329452, "n_models": 4, "frac_models": 1.0}, {"antibody": "NTD_5-7", "aa_substitutions": "", "measured IC50": 0.28, "lower_bound": false, "mean_IC50": 26.914560074106774, "median_IC50": 26.914560074106774, "std_IC50": 1.8358489163045786, "n_models": 2, "frac_models": 1.0}, {"antibody": "NTD_5-7", "aa_substitutions": "G103F", "measured IC50": 96.0, "lower_bound": true, "mean_IC50": 222.14235600723703, "median_IC50": 222.14235600723703, "std_IC50": 49.37319762778682, "n_models": 2, "frac_models": 1.0}, {"antibody": "NTD_5-7", "aa_substitutions": "L176K", "measured IC50": 96.0, "lower_bound": true, "mean_IC50": 320.4913832493219, "median_IC50": 320.4913832493219, "std_IC50": 85.7727414084065, "n_models": 2, "frac_models": 1.0}, {"antibody": "NTD_5-7", "aa_substitutions": "S172N", "measured IC50": 96.0, "lower_bound": true, "mean_IC50": 312.40491661223695, "median_IC50": 312.40491661223695, "std_IC50": 109.65803728358618, "n_models": 2, "frac_models": 1.0}]}}, {"mode": "vega-lite"});
+</script></div>
+</div>
+<p>Now also calculate the fold changes, using the <strong>median</strong> prediction:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fold_changes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">validation_vs_prediction</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;median_IC50&quot;</span><span class="p">:</span> <span class="s2">&quot;predicted IC50&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;aa_substitutions != &#39;&#39;&quot;</span><span class="p">)</span>
+    <span class="p">[[</span><span class="s2">&quot;antibody&quot;</span><span class="p">,</span> <span class="s2">&quot;aa_substitutions&quot;</span><span class="p">,</span> <span class="s2">&quot;measured IC50&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted IC50&quot;</span><span class="p">,</span> <span class="s2">&quot;lower_bound&quot;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">validation_vs_prediction</span>
+        <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;median_IC50&quot;</span><span class="p">:</span> <span class="s2">&quot;predicted IC50&quot;</span><span class="p">})</span>
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;aa_substitutions == &#39;&#39;&quot;</span><span class="p">)</span>
+        <span class="p">[[</span><span class="s2">&quot;antibody&quot;</span><span class="p">,</span> <span class="s2">&quot;measured IC50&quot;</span><span class="p">,</span> <span class="s2">&quot;predicted IC50&quot;</span><span class="p">]],</span>
+        <span class="n">on</span><span class="o">=</span><span class="s2">&quot;antibody&quot;</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+        <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;many_to_one&quot;</span><span class="p">,</span>
+        <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot; mutant&quot;</span><span class="p">,</span> <span class="s2">&quot; unmutated&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">measured_fold_change</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;measured IC50 mutant&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;measured IC50 unmutated&quot;</span><span class="p">],</span>
+        <span class="n">predicted_fold_change</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;predicted IC50 mutant&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;predicted IC50 unmutated&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fold_changes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>antibody</th>
+      <th>aa_substitutions</th>
+      <th>measured IC50 mutant</th>
+      <th>predicted IC50 mutant</th>
+      <th>lower_bound</th>
+      <th>measured IC50 unmutated</th>
+      <th>predicted IC50 unmutated</th>
+      <th>measured_fold_change</th>
+      <th>predicted_fold_change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CC67.105</td>
+      <td>D1146N</td>
+      <td>300.00000</td>
+      <td>1468.569818</td>
+      <td>True</td>
+      <td>2.19000</td>
+      <td>2.465804</td>
+      <td>136.986301</td>
+      <td>595.574434</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CC67.105</td>
+      <td>D1153Y</td>
+      <td>300.00000</td>
+      <td>1232.814936</td>
+      <td>True</td>
+      <td>2.19000</td>
+      <td>2.465804</td>
+      <td>136.986301</td>
+      <td>499.964692</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CC67.105</td>
+      <td>D1163R</td>
+      <td>9.43000</td>
+      <td>13.646795</td>
+      <td>False</td>
+      <td>2.19000</td>
+      <td>2.465804</td>
+      <td>4.305936</td>
+      <td>5.534420</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CC67.105</td>
+      <td>F1156L</td>
+      <td>300.00000</td>
+      <td>768.075469</td>
+      <td>True</td>
+      <td>2.19000</td>
+      <td>2.465804</td>
+      <td>136.986301</td>
+      <td>311.490885</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CC9.104</td>
+      <td>D1146N</td>
+      <td>2.90000</td>
+      <td>10.638997</td>
+      <td>False</td>
+      <td>2.34000</td>
+      <td>6.545884</td>
+      <td>1.239316</td>
+      <td>1.625296</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CC9.104</td>
+      <td>D1153Y</td>
+      <td>300.00000</td>
+      <td>404.286520</td>
+      <td>True</td>
+      <td>2.34000</td>
+      <td>6.545884</td>
+      <td>128.205128</td>
+      <td>61.761945</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CC9.104</td>
+      <td>D1163R</td>
+      <td>28.60000</td>
+      <td>49.436653</td>
+      <td>False</td>
+      <td>2.34000</td>
+      <td>6.545884</td>
+      <td>12.222222</td>
+      <td>7.552326</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CC9.104</td>
+      <td>F1156L</td>
+      <td>269.00000</td>
+      <td>579.525276</td>
+      <td>False</td>
+      <td>2.34000</td>
+      <td>6.545884</td>
+      <td>114.957265</td>
+      <td>88.532776</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LyCoV-1404</td>
+      <td>F486L</td>
+      <td>0.00143</td>
+      <td>0.009337</td>
+      <td>False</td>
+      <td>0.00187</td>
+      <td>0.011228</td>
+      <td>0.764706</td>
+      <td>0.831574</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LyCoV-1404</td>
+      <td>G447D</td>
+      <td>4.00000</td>
+      <td>8.213625</td>
+      <td>True</td>
+      <td>0.00187</td>
+      <td>0.011228</td>
+      <td>2139.037433</td>
+      <td>731.511692</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LyCoV-1404</td>
+      <td>K444N</td>
+      <td>4.00000</td>
+      <td>1.338305</td>
+      <td>True</td>
+      <td>0.00187</td>
+      <td>0.011228</td>
+      <td>2139.037433</td>
+      <td>119.190499</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LyCoV-1404</td>
+      <td>N439Y</td>
+      <td>1.12000</td>
+      <td>1.279219</td>
+      <td>False</td>
+      <td>0.00187</td>
+      <td>0.011228</td>
+      <td>598.930481</td>
+      <td>113.928225</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>LyCoV-1404</td>
+      <td>P499H</td>
+      <td>4.00000</td>
+      <td>2.720276</td>
+      <td>True</td>
+      <td>0.00187</td>
+      <td>0.011228</td>
+      <td>2139.037433</td>
+      <td>242.269825</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>LyCoV-1404</td>
+      <td>S446T</td>
+      <td>0.48500</td>
+      <td>0.674567</td>
+      <td>False</td>
+      <td>0.00187</td>
+      <td>0.011228</td>
+      <td>259.358289</td>
+      <td>60.077411</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>NTD_5-7</td>
+      <td>G103F</td>
+      <td>96.00000</td>
+      <td>222.142356</td>
+      <td>True</td>
+      <td>0.28000</td>
+      <td>26.914560</td>
+      <td>342.857143</td>
+      <td>8.253613</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>NTD_5-7</td>
+      <td>L176K</td>
+      <td>96.00000</td>
+      <td>320.491383</td>
+      <td>True</td>
+      <td>0.28000</td>
+      <td>26.914560</td>
+      <td>342.857143</td>
+      <td>11.907733</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NTD_5-7</td>
+      <td>S172N</td>
+      <td>96.00000</td>
+      <td>312.404917</td>
+      <td>True</td>
+      <td>0.28000</td>
+      <td>26.914560</td>
+      <td>342.857143</td>
+      <td>11.607283</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Now plot the fold changes:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fold_change_chart</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">fold_changes</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
+            <span class="s2">&quot;measured_fold_change&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;measured fold change IC50&quot;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span>
+            <span class="s2">&quot;predicted_fold_change&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;predicted fold change IC50&quot;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="s2">&quot;antibody&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;lower_bound&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;lower bound&quot;</span><span class="p">),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.3g&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">fold_changes</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">float</span>
+            <span class="k">else</span> <span class="n">c</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">fold_changes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_circle</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">configure_axis</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fold_change_chart</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/fh/fast/bloom_j/computational_notebooks/jbloom/2022/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/.snakemake/conda/c868d227b3eb59ac260085a8db96c8f9/lib/python3.9/site-packages/altair/utils/core.py:317: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for col_name, dtype in df.dtypes.iteritems():
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div id="altair-viz-359cbe8eb3834e05aeee2fe7500fbd69"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-359cbe8eb3834e05aeee2fe7500fbd69") {
+      outputDiv = document.getElementById("altair-viz-359cbe8eb3834e05aeee2fe7500fbd69");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@5.2.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.2.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-8e767c757c55cf8d3843de8529294f7e"}, "mark": {"type": "circle", "filled": true, "opacity": 0.6, "size": 60}, "encoding": {"color": {"field": "lower_bound", "title": "lower bound", "type": "nominal"}, "facet": {"columns": 4, "field": "antibody", "title": null, "type": "nominal"}, "tooltip": [{"field": "antibody", "type": "nominal"}, {"field": "aa_substitutions", "type": "nominal"}, {"field": "measured IC50 mutant", "format": ".3g", "type": "quantitative"}, {"field": "predicted IC50 mutant", "format": ".3g", "type": "quantitative"}, {"field": "lower_bound", "type": "nominal"}, {"field": "measured IC50 unmutated", "format": ".3g", "type": "quantitative"}, {"field": "predicted IC50 unmutated", "format": ".3g", "type": "quantitative"}, {"field": "measured_fold_change", "format": ".3g", "type": "quantitative"}, {"field": "predicted_fold_change", "format": ".3g", "type": "quantitative"}], "x": {"field": "measured_fold_change", "scale": {"type": "log"}, "title": "measured fold change IC50", "type": "quantitative"}, "y": {"field": "predicted_fold_change", "scale": {"type": "log"}, "title": "predicted fold change IC50", "type": "quantitative"}}, "height": 150, "resolve": {"scale": {"x": "independent", "y": "independent"}}, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.2.0.json", "datasets": {"data-8e767c757c55cf8d3843de8529294f7e": [{"antibody": "CC67.105", "aa_substitutions": "D1146N", "measured IC50 mutant": 300.0, "predicted IC50 mutant": 1468.5698183408585, "lower_bound": true, "measured IC50 unmutated": 2.19, "predicted IC50 unmutated": 2.4658039941211123, "measured_fold_change": 136.986301369863, "predicted_fold_change": 595.5744340759337}, {"antibody": "CC67.105", "aa_substitutions": "D1153Y", "measured IC50 mutant": 300.0, "predicted IC50 mutant": 1232.814935508453, "lower_bound": true, "measured IC50 unmutated": 2.19, "predicted IC50 unmutated": 2.4658039941211123, "measured_fold_change": 136.986301369863, "predicted_fold_change": 499.9646924279826}, {"antibody": "CC67.105", "aa_substitutions": "D1163R", "measured IC50 mutant": 9.43, "predicted IC50 mutant": 13.646795268146565, "lower_bound": false, "measured IC50 unmutated": 2.19, "predicted IC50 unmutated": 2.4658039941211123, "measured_fold_change": 4.30593607305936, "predicted_fold_change": 5.534420132615082}, {"antibody": "CC67.105", "aa_substitutions": "F1156L", "measured IC50 mutant": 300.0, "predicted IC50 mutant": 768.0754691861293, "lower_bound": true, "measured IC50 unmutated": 2.19, "predicted IC50 unmutated": 2.4658039941211123, "measured_fold_change": 136.986301369863, "predicted_fold_change": 311.4908853328769}, {"antibody": "CC9.104", "aa_substitutions": "D1146N", "measured IC50 mutant": 2.9, "predicted IC50 mutant": 10.638997318896083, "lower_bound": false, "measured IC50 unmutated": 2.34, "predicted IC50 unmutated": 6.545883926356828, "measured_fold_change": 1.2393162393162394, "predicted_fold_change": 1.6252957489909716}, {"antibody": "CC9.104", "aa_substitutions": "D1153Y", "measured IC50 mutant": 300.0, "predicted IC50 mutant": 404.2865201942077, "lower_bound": true, "measured IC50 unmutated": 2.34, "predicted IC50 unmutated": 6.545883926356828, "measured_fold_change": 128.2051282051282, "predicted_fold_change": 61.7619445658605}, {"antibody": "CC9.104", "aa_substitutions": "D1163R", "measured IC50 mutant": 28.6, "predicted IC50 mutant": 49.43665262935296, "lower_bound": false, "measured IC50 unmutated": 2.34, "predicted IC50 unmutated": 6.545883926356828, "measured_fold_change": 12.222222222222223, "predicted_fold_change": 7.552326497923007}, {"antibody": "CC9.104", "aa_substitutions": "F1156L", "measured IC50 mutant": 269.0, "predicted IC50 mutant": 579.5252761210431, "lower_bound": false, "measured IC50 unmutated": 2.34, "predicted IC50 unmutated": 6.545883926356828, "measured_fold_change": 114.95726495726497, "predicted_fold_change": 88.53277611410127}, {"antibody": "LyCoV-1404", "aa_substitutions": "F486L", "measured IC50 mutant": 0.00143, "predicted IC50 mutant": 0.009337152226103568, "lower_bound": false, "measured IC50 unmutated": 0.00187, "predicted IC50 unmutated": 0.011228289296761854, "measured_fold_change": 0.7647058823529412, "predicted_fold_change": 0.8315738915630118}, {"antibody": "LyCoV-1404", "aa_substitutions": "G447D", "measured IC50 mutant": 4.0, "predicted IC50 mutant": 8.213624904415209, "lower_bound": true, "measured IC50 unmutated": 0.00187, "predicted IC50 unmutated": 0.011228289296761854, "measured_fold_change": 2139.03743315508, "predicted_fold_change": 731.5116922382781}, {"antibody": "LyCoV-1404", "aa_substitutions": "K444N", "measured IC50 mutant": 4.0, "predicted IC50 mutant": 1.3383054045081364, "lower_bound": true, "measured IC50 unmutated": 0.00187, "predicted IC50 unmutated": 0.011228289296761854, "measured_fold_change": 2139.03743315508, "predicted_fold_change": 119.19049902767402}, {"antibody": "LyCoV-1404", "aa_substitutions": "N439Y", "measured IC50 mutant": 1.12, "predicted IC50 mutant": 1.27921906466762, "lower_bound": false, "measured IC50 unmutated": 0.00187, "predicted IC50 unmutated": 0.011228289296761854, "measured_fold_change": 598.9304812834225, "predicted_fold_change": 113.92822458150738}, {"antibody": "LyCoV-1404", "aa_substitutions": "P499H", "measured IC50 mutant": 4.0, "predicted IC50 mutant": 2.720275682121668, "lower_bound": true, "measured IC50 unmutated": 0.00187, "predicted IC50 unmutated": 0.011228289296761854, "measured_fold_change": 2139.03743315508, "predicted_fold_change": 242.26982492392435}, {"antibody": "LyCoV-1404", "aa_substitutions": "S446T", "measured IC50 mutant": 0.485, "predicted IC50 mutant": 0.6745665519014975, "lower_bound": false, "measured IC50 unmutated": 0.00187, "predicted IC50 unmutated": 0.011228289296761854, "measured_fold_change": 259.3582887700535, "predicted_fold_change": 60.07741108844042}, {"antibody": "NTD_5-7", "aa_substitutions": "G103F", "measured IC50 mutant": 96.0, "predicted IC50 mutant": 222.14235600723703, "lower_bound": true, "measured IC50 unmutated": 0.28, "predicted IC50 unmutated": 26.914560074106774, "measured_fold_change": 342.85714285714283, "predicted_fold_change": 8.253612743273099}, {"antibody": "NTD_5-7", "aa_substitutions": "L176K", "measured IC50 mutant": 96.0, "predicted IC50 mutant": 320.4913832493219, "lower_bound": true, "measured IC50 unmutated": 0.28, "predicted IC50 unmutated": 26.914560074106774, "measured_fold_change": 342.85714285714283, "predicted_fold_change": 11.907732556908911}, {"antibody": "NTD_5-7", "aa_substitutions": "S172N", "measured IC50 mutant": 96.0, "predicted IC50 mutant": 312.40491661223695, "lower_bound": true, "measured IC50 unmutated": 0.28, "predicted IC50 unmutated": 26.914560074106774, "measured_fold_change": 342.85714285714283, "predicted_fold_change": 11.60728303758481}]}}, {"mode": "vega-lite"});
+</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+          </div>
+          
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Bernadeta Dadonaite and Jesse Bloom (2022).
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/validation_IC50s.nblink.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

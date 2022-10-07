@@ -1,0 +1,69 @@
+Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike using a barcoded lentiviral platform against RBD, NTD, and S2 antibodies
+==================================================================================================================================
+
+This page documents the data analysis.
+For the actual code, see https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs
+
+Study by Bernadeta Dadonaite and Jesse Bloom.
+
+Workflow
+--------
+Below is the rulegraph for the `snakemake <https://snakemake.readthedocs.io/>`_ workflow.
+Click :download:`here <../../results/docs_source/filegraph.svg>` for the more detailed filegraph.
+
+.. image:: ../../results/docs_source/rulegraph.svg
+   :width: 800
+
+Analysis notebooks
+------------------
+Many of the plots in these notebooks are interactive, so try mousing over points for
+details, using dropdowns, etc.
+
+.. toctree::
+   :maxdepth: 1
+
+   analyze_pacbio_ccs
+   build_pacbio_consensus
+   build_codon_variants
+   analyze_variant_counts
+   analyze_func_scores
+   fit_globalepistasis
+   avg_muteffects
+   analyze_prob_escape
+   fit_polyclonal
+   avg_antibody_escape
+   validation_IC50s
+   compare_muteffects
+
+Data files
+----------
+- `parental gene sequence <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/gene_sequence/codon.fasta>`_
+- `parental protein sequence <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/gene_sequence/protein.fasta>`_
+- `sequential-to-reference site numbers <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/site_numbering/site_numbering_map.csv>`_
+- `codon-variant table <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/variants/codon_variants.csv>`_
+- `processed barcode sequencing runs <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/barcode_runs/processed_barcode_runs.csv>`_
+- `variant counts <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/variant_counts>`_
+- `functional selection experiments <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/func_scores/functional_selections.csv>`_
+- `mutation effects for each functional selection <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/globalepistasis_fits>`_
+- `mutation functional effects replicate average (observed phenotype) <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/muteffects_functional/muteffects_observed.csv>`_
+- `mutation functional effects replicate average (latent phenotype) <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/muteffects_functional/muteffects_latent.csv>`_
+- `antibody selection experiments <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/prob_escape/antibody_selections.csv>`_
+- `antibody escape values <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/antibody_escape>`_
+- `sequential to reference site numbering <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/site_numbering/site_numbering_map.csv>`_
+- `natural evolution enrichment vs DMS <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/compare_muteffects/natural_enrichment_vs_dms.csv>`_
+
+Interactive plots of mutation functional effects
+------------------------------------------------
+- `Observed phenotype effects <muteffects_observed_heatmap.html>`_
+- `Latent phenotype effects <muteffects_latent_heatmap.html>`_
+
+Interactive plots of mutation antibody escape
+---------------------------------------------
+- `CC67.105 escape plot <CC67.105_escape_plot.html>`_
+- `CC9.104 escape plot <CC9.104_escape_plot.html>`_
+- `LyCoV-1404 escape plot <LyCoV-1404_escape_plot.html>`_
+- `NTD 5-7 escape plot <NTD_5-7_escape_plot.html>`_
+
+Additional plots
+----------------
+ - `natural enrichment versus DMS <natural_enrichment_vs_dms.html>`_
