@@ -53,7 +53,7 @@ def format_metadata_tsv(config, outpath, pacbio=False):
             )
             .explode('filename_fullpath')
             .assign(
-                filename=lambda x: x['filename_fullpath'].map(os.path.basename),
+                filename=lambda x: x['library_ID']  + ".fastq.gz",
                 filename_fullpath=lambda x: x['filename_fullpath'].str.strip()
             )
             .drop(columns=illumina_runs.columns)
@@ -69,26 +69,11 @@ def format_metadata_tsv(config, outpath, pacbio=False):
         # Widen the metadata so there are unqiue columns for each file associated with a single sample
         submission_wide_metadata = (
             submission_metadata
-            .assign(
-                filename_count=lambda x: x.groupby(['biosample_accession', 'library_ID'])['filename'].cumcount() + 1,
-                filename_col=lambda x: 'filename' + x['filename_count'].map(lambda c: str(c) if c > 1 else '')
-                )
-            .pivot(
-                index='library_ID',
-                columns='filename_col',
-                values='filename',
-                )
-            )
-        
-        submission_wide_metadata = (
-            submission_metadata
-            .drop(columns=['filename_fullpath', 'filename'])
+            .drop(columns=['filename_fullpath'])
             .drop_duplicates()
-            .merge(submission_wide_metadata[sorted(submission_wide_metadata.columns, key=lambda x: x[-1], reverse=True)],
-                   on='library_ID',
-                   validate='one_to_one',
-                   )
             )
+
+        assert len(illumina_runs) == len(submission_wide_metadata)
         
     else:
         
@@ -112,7 +97,7 @@ def format_metadata_tsv(config, outpath, pacbio=False):
                 design_description=pacbio_config['description'],
                 filetype='fastq',
                 filename_fullpath=lambda x: x['fastq'],
-                filename=lambda x: x['filename_fullpath'].map(os.path.basename)
+                filename=lambda x: x['library_ID'] + '.fastq.gz'
             )
             .drop(columns=pacbio_runs.columns)
             .reset_index(drop=True)
@@ -127,7 +112,7 @@ def format_metadata_tsv(config, outpath, pacbio=False):
         # All we need to do to finish formatting the PacBio is drop the file paths
         submission_wide_metadata = (
             submission_metadata
-            .drop(columns=['filename_fullpath', 'filename'])
+            .drop(columns=['filename_fullpath'])
             .drop_duplicates()
         )
         

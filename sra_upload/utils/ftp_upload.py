@@ -4,27 +4,52 @@ import os
 import tarfile
 import pandas as pd
 
-def make_tar_file(fastqs, filename):
+def make_tar_file(fastq_file, filename):
     """
     Make the compressed *.tar file with runs to upload to SRA.
 
     Parameters
     ----------
-    fastqs: pd.DataFrame
-        Table of the fastq file names and paths for upload to the SRA.
+    fastq_file: str
+        Path to table of the fastq file names and paths for upload to the SRA.
     """
     
+    # Reformat the fastqs so that there is one row per filename
+    fastqs_long = pd.read_csv(fastq_file)
+    fastqs = fastqs_long.groupby('filename', as_index=False).agg(" ".join)
+
     # Add all of the fastq files to upload to the tar directory
     try:
+        
+        # Make a temp directory to store concatenated fastqs
+        if os.path.exists("tmp/"):
+            os.system("rm -rf tmp/")
+        os.makedirs("tmp/")
+
+        # Open up the tar file
         with tarfile.open(filename, mode='w') as f:
+            # Iterate over the unique filenames which can have many files per sample
             for i, tup in enumerate(fastqs.itertuples()):
+
+                # For concise output, only alert after every 10 processed files. 
                 if (i+1) % 10 == 0 or i == 0 or i+1 == len(fastqs):
-                    print(f"Adding file {i + 1} of {len(fastqs)} to {filename}")
-                f.add(tup.filename_fullpath, arcname=tup.filename)
+                    print(f"Concatenating and Adding file {i + 1} of {len(fastqs)} to {filename}")
+
+                # Concatenate multiple files into a single file corresponding to a library 
+                os.system(f"cat {tup.filename_fullpath} > tmp/{tup.filename}")
+                # Add the concatenated file to the tar
+                f.add(f"tmp/{tup.filename}", arcname=tup.filename)
+
             print(f"Added all files to {filename}\n")
+            
+            # When done, remove the local copies of the fastq files.
+            print("Removing tmp directory.\n")
+            os.system("rm -rf tmp/")
+
     except:
         if os.path.isfile(filename):
            raise 
+
     print(f"The size of {filename} is {os.path.getsize(filename) / 1e9:.1f} GB\n")
 
     # Check that all of the files are in the tarred directory
