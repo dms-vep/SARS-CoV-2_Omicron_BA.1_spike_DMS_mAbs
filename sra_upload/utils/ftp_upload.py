@@ -2,6 +2,8 @@ import datetime
 import ftplib
 import os
 import tarfile
+import yaml
+import argparse
 import pandas as pd
 
 def make_tar_file(fastq_file, filename):
@@ -103,3 +105,64 @@ def upload_via_ftp(tar_path,
             ftp.storbinary(f"STOR {tar_path}", f)
 
     print(f"Finished upload at {datetime.datetime.now()}")
+
+
+if __name__ == '__main__':
+    """
+    Have the option to run a command line version of the FTP upload because this can take 
+    a really, really long time. 
+    """
+
+    # Command line interface
+    parser = argparse.ArgumentParser(
+        description="Submit samples to the SRA using the FTP protocol."
+    )
+
+    parser.add_argument(
+        "--config",
+        type=str,
+        required=True,
+        help="Path to the config file with FTP credentials.",
+    )
+
+    parser.add_argument(
+        "--barcodes",
+        type=bool,
+        required=True,
+        help="True if the samples are Illumina barcode runs, otherwise False.",
+    )
+
+    args = parser.parse_args()
+
+    with open(args.config) as f:
+         config = yaml.safe_load(f)
+    
+    print("Starting to upload samples to the SRA via FTP.\n")
+
+    print(f"""
+    ftp_username: {config['ftp_username']}
+    ftp_account_folder: {config['ftp_account_folder']}
+    ftp_subfolder: {config['barcode_runs']['ftp_subfolder']}
+    """)
+
+    if os.path.isfile('ftp_password.txt'):
+        print("ftp_password.txt Exists!")
+    else:
+        raise Exception("Make sure that ftp_password.txt exists in this directory.")
+
+    if args.barcodes: 
+        upload_via_ftp(tar_path="barcode_SRA_submission.tar",
+        ftp_username=config['ftp_username'],
+        ftp_account_folder=config['ftp_account_folder'],
+        ftp_subfolder=config['barcode_runs']['ftp_subfolder'],
+        ftp_address='ftp-private.ncbi.nlm.nih.gov',
+        ftp_password='ftp_password.txt'
+        )
+    else: 
+        upload_via_ftp(tar_path="pacbio_SRA_submission.tar",
+        ftp_username=config['ftp_username'],
+        ftp_account_folder=config['ftp_account_folder'],
+        ftp_subfolder=config['pacbio_runs']['ftp_subfolder'],
+        ftp_address='ftp-private.ncbi.nlm.nih.gov',
+        ftp_password='ftp_password.txt'
+        )

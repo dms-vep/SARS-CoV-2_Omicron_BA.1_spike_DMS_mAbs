@@ -7,9 +7,10 @@
 # ====== Info applying to the whole variant library ====== #
 organism: severe acute respiratory syndrome coronavirus 2
 strain: Omicron BA.1
-isolation_source: plasmid
+isolation_source: HEK-293T-rtTA
 collection_date: 2022
-geographic_location: USA
+geographic_location: 'USA: Washington'
+sample_type: plasmid
 
 # ======== Info for Illumina barcodes BioSamples ======== #
 barcode_runs: 
@@ -18,10 +19,10 @@ barcode_runs:
   file_path: ../data/barcode_runs.csv
   
   # Edit this data that goes into the SRA metadata table for the BioSample
-  accession: SAMN12345678
+  accession: SAMN31216920
   sample_id_columns: [virus_batch, sample_type, antibody, antibody_concentration, replicate]
-  title_prefix: Full Spike glycoprotein DMS illumina barcode sequencing for
-  description: PCR of barcodes from glycoprotein variants
+  title_prefix: Omicron BA.1 spike Illumina barcode sequencing for sample  
+  description: Illumina barcode sequencing Omicron BA.1 spike
   strategy: AMPLICON
   source: SYNTHETIC
   selection: PCR
@@ -30,7 +31,8 @@ barcode_runs:
   model: Illumina HiSeq 2500
 
   # Meaningful BioSample specific folder name for FTP upload
-  ftp_subfolder: omicron_BA1_barcodes
+  ftp_subfolder: Omicron_BA1_spike_DMS_mAbs_barcodes
+
 
 # ========== Info for PacBio library BioSample ========== #
 pacbio_runs:
@@ -40,21 +42,21 @@ pacbio_runs:
  
   # This data goes into the SRA metadata table
   accession: SAMN12341234
-  title_prefix: Full Spike glycoprotein PacBio CCSs linking variants to barcodes for library
-  description: PacBio CCSs linking variants to barcodes
-  strategy: AMPLICON
+  title_prefix: PacBio CCSs linking variants to barcodes for SARS-CoV-2 Omicron BA1 spike deep mutational scanning
+  description: Restriction digest of plasmids carrying barcoded spike variants
+  strategy: Synthetic-Long-Read
   source: SYNTHETIC
   selection: Restriction Digest
   layout: single
   platform: PACBIO_SMRT
-  model: Sequel
+  model: PacBio Sequel II
 
   # Meaningful BioSample specific folder name for FTP upload
-  ftp_subfolder: omicron_BA1_pacbio
+  ftp_subfolder: Omicron_BA1_spike_DMS_mAbs_pacbio
 
 # =========== Info for uploading to SRA via FTP =========== #
 # These come from the SRA FTP upload instructions.
 ftp_username: subftp
-ftp_account_folder: uploads/something_or_another
+ftp_account_folder: uploads/whannon_fredhutch.org_K2yAcKhg
 
   
