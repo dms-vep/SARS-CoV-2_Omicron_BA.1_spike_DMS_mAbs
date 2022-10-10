@@ -41,8 +41,8 @@ pacbio_runs:
   file_path: ../data/PacBio_runs.csv
  
   # This data goes into the SRA metadata table
-  accession: SAMN12341234
-  title_prefix: PacBio CCSs linking variants to barcodes for SARS-CoV-2 Omicron BA1 spike deep mutational scanning
+  accession: SAMN31220980
+  title_prefix: PacBio CCSs linking variants to barcodes for SARS-CoV-2 Omicron BA1 spike deep mutational scanning for
   description: Restriction digest of plasmids carrying barcoded spike variants
   strategy: Synthetic-Long-Read
   source: SYNTHETIC
@@ -52,7 +52,7 @@ pacbio_runs:
   model: PacBio Sequel II
 
   # Meaningful BioSample specific folder name for FTP upload
-  ftp_subfolder: Omicron_BA1_spike_DMS_mAbs_pacbio
+  ftp_subfolder: Omicron_BA1_spike_DMS_mAbs_pacbio_ccss
 
 # =========== Info for uploading to SRA via FTP =========== #
 # These come from the SRA FTP upload instructions.

@@ -126,10 +126,10 @@ if __name__ == '__main__':
     )
 
     parser.add_argument(
-        "--barcodes",
-        type=bool,
+        "--sampletype",
+        type=str,
         required=True,
-        help="True if the samples are Illumina barcode runs, otherwise False.",
+        help="Either barcodes or pacbio depending on what you're submitting.",
     )
 
     args = parser.parse_args()
@@ -142,7 +142,6 @@ if __name__ == '__main__':
     print(f"""
     ftp_username: {config['ftp_username']}
     ftp_account_folder: {config['ftp_account_folder']}
-    ftp_subfolder: {config['barcode_runs']['ftp_subfolder']}
     """)
 
     if os.path.isfile('ftp_password.txt'):
@@ -150,7 +149,14 @@ if __name__ == '__main__':
     else:
         raise Exception("Make sure that ftp_password.txt exists in this directory.")
 
-    if args.barcodes: 
+    assert args.sampletype in {'pacbio', 'barcodes'}
+
+    if args.sampletype == 'barcodes': 
+
+        print("\nUploading runs for Illumina Barcodes.\n")
+        
+        print(f"ftp_subfolder: {config['barcode_runs']['ftp_subfolder']}")
+
         upload_via_ftp(tar_path="barcode_SRA_submission.tar",
         ftp_username=config['ftp_username'],
         ftp_account_folder=config['ftp_account_folder'],
@@ -158,7 +164,13 @@ if __name__ == '__main__':
         ftp_address='ftp-private.ncbi.nlm.nih.gov',
         ftp_password='ftp_password.txt'
         )
+
     else: 
+
+        print("\nUploading runs for PacBio CCSs.\n")
+        
+        print(f"ftp_subfolder: {config['pacbio_runs']['ftp_subfolder']}")
+
         upload_via_ftp(tar_path="pacbio_SRA_submission.tar",
         ftp_username=config['ftp_username'],
         ftp_account_folder=config['ftp_account_folder'],
