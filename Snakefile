@@ -85,24 +85,29 @@ rule compare_muteffects:
             github_pages_url,
             os.path.basename(output.html),
         ),
+        clade_desc=lambda wc: (
+            f"of all clades" if wc.clade == "all" else f"of {wc.clade}"
+        ),
     output:
-        nb="results/compare_muteffects/compare_muteffects.ipynb",
-        csv=config["natural_enrichment_vs_dms"],
-        html=config["natural_enrichment_vs_dms_plot"],
+        nb="results/compare_muteffects/compare_muteffects_{clade}.ipynb",
+        csv="results/compare_muteffects/{clade}_natural_enrichment_vs_dms.csv",
+        html="results/compare_muteffects/{clade}_natural_enrichment_vs_dms.html",
     log:
-        os.path.join(config["logdir"], "compare_muteffects.txt"),
+        os.path.join(config["logdir"], "compare_muteffects_{clade}.txt"),
     conda:
         "dms-vep-pipeline/environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} &> {log}
+        papermill -p clade {wildcards.clade} {input.nb} {output.nb} &> {log}
         python {input.pyscript} \
             --chart {output.html} \
             --output {output.html} \
             --markdown {input.md} \
             --site {params.site} \
-            --title "DMS vs natural evolution for {config[github_repo]}" \
-            --description "Correlations among DMS datasets and natural evolution" \
+            --title \
+            "DMS vs natural evolution {params.clade_desc} for {config[github_repo]}" \
+            --description \
+            "Correlations among DMS datasets and natural evolution {params.clade_desc}" \
             &>> {log}
         """
 
@@ -110,13 +115,31 @@ rule compare_muteffects:
 # Add any extra data/results files for docs with name: file
 extra_data_files = {
     "sequential to reference site numbering": config["site_numbering_map"],
-    "natural evolution enrichment vs DMS": config["natural_enrichment_vs_dms"],
 }
+extra_data_files.update(
+    {
+        f"{clade} clade natural evolution enrichment vs DMS": (
+            f"results/compare_muteffects/{clade}_natural_enrichment_vs_dms.csv"
+        )
+        for clade in config["actual_vs_expected_clades"]
+    }
+)
 
 # Add any extra HTML documents to display here with name: file
 extra_html_docs = {
-    "natural enrichment versus DMS": config["natural_enrichment_vs_dms_plot"]
+    f"{clade} clade natural enrichment versus DMS": (
+        f"results/compare_muteffects/{clade}_natural_enrichment_vs_dms.html"
+    )
+    for clade in config["actual_vs_expected_clades"]
 }
+
+# If you add rules with "nb" output that have wildcards, specify the rule name
+# and subindex titles for the wildcards as in "docs.smk" for `nb_rule_wildcards`
+# and `subindex_titles`
+extra_nb_rule_wildcards = {
+    "compare_muteffects": {"clade": config["actual_vs_expected_clades"]}
+}
+extra_subindex_titles = {"compare_muteffects": "natural evolution enrichment vs DMS"}
 
 # include `dms-vep-pipeline` docs building Snakemake file
 include: os.path.join(config["pipeline_path"], "docs.smk")

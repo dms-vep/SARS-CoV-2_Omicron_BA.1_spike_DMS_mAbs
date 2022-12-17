@@ -204,10 +204,8 @@ rbd_dms_Starr_target: Omicron_BA1  # analyze Starr et al data for this target
 # Expected counts (from UShER mutation rates analysis) versus observed
 actual_vs_expected_mut_counts: SARS2-mut-rates/results/expected_vs_actual_mut_counts/expected_vs_actual_mut_counts.csv
 # analyze counts for these Nextstrain clades: provide list of clades or "all"
-actual_vs_expected_clades:  all
+actual_vs_expected_clades:
+  - all
+  - 21K
 actual_vs_expected_pseudocount: 0.5  # add before computing enrichment
 actual_vs_expected_min_expected: 20  # only consider mutations with >= this many expected counts
-
-# generated output files from comparing natural mutation enrichment to DMS
-natural_enrichment_vs_dms: results/compare_muteffects/natural_enrichment_vs_dms.csv
-natural_enrichment_vs_dms_plot: results/compare_muteffects/natural_enrichment_vs_dms.html
