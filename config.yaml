@@ -17,7 +17,7 @@ github_user: dms-vep
 github_branch: main  # main branch for repo, assume renamed from master -> main
 description: Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike using a barcoded lentiviral platform against RBD, NTD, and S2 antibodies
 year: 2022
-authors: Bernadeta Dadonaite and Jesse Bloom
+authors: Bernadeta Dadonaite, Jesse Bloom, et al (https://www.biorxiv.org/content/10.1101/2022.10.13.512056v1)
 
 # ----------------------------------------------------------------------------
 # Parameters for analysis
@@ -204,10 +204,8 @@ rbd_dms_Starr_target: Omicron_BA1  # analyze Starr et al data for this target
 # Expected counts (from UShER mutation rates analysis) versus observed
 actual_vs_expected_mut_counts: SARS2-mut-rates/results/expected_vs_actual_mut_counts/expected_vs_actual_mut_counts.csv
 # analyze counts for these Nextstrain clades: provide list of clades or "all"
-actual_vs_expected_clades:  all
+actual_vs_expected_clades:
+  - all
+  - 21K
 actual_vs_expected_pseudocount: 0.5  # add before computing enrichment
 actual_vs_expected_min_expected: 20  # only consider mutations with >= this many expected counts
-
-# generated output files from comparing natural mutation enrichment to DMS
-natural_enrichment_vs_dms: results/compare_muteffects/natural_enrichment_vs_dms.csv
-natural_enrichment_vs_dms_plot: results/compare_muteffects/natural_enrichment_vs_dms.html

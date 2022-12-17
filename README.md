@@ -1,5 +1,6 @@
 # Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike using a barcoded lentiviral platform
-Study by Bernadeta Dadonaite and Jesse Bloom.
+Study by Bernadeta Dadonaite, Jesse Bloom, et al.
+See the pre-print [here](https://www.biorxiv.org/content/10.1101/2022.10.13.512056v1).
 
 Measures the functional effects of mutations and escape from the following antibodies:
  - 5-7
