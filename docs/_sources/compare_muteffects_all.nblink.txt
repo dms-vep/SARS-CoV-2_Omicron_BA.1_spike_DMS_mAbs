@@ -1,0 +1,3 @@
+{
+    "path": "../compare_muteffects/compare_muteffects_all.ipynb"
+}

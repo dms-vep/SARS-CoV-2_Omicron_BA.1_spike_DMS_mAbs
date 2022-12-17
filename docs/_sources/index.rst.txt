@@ -50,7 +50,8 @@ Data files
 - `antibody selection experiments <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/prob_escape/antibody_selections.csv>`_
 - `antibody escape values <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/antibody_escape>`_
 - `sequential to reference site numbering <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/site_numbering/site_numbering_map.csv>`_
-- `natural evolution enrichment vs DMS <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/compare_muteffects/natural_enrichment_vs_dms.csv>`_
+- `all clade natural evolution enrichment vs DMS <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/compare_muteffects/all_natural_enrichment_vs_dms.csv>`_
+- `21K clade natural evolution enrichment vs DMS <https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/blob/main/./results/compare_muteffects/21K_natural_enrichment_vs_dms.csv>`_
 
 Interactive plots of mutation functional effects
 ------------------------------------------------
@@ -66,4 +67,5 @@ Interactive plots of mutation antibody escape
 
 Additional plots
 ----------------
- - `natural enrichment versus DMS <natural_enrichment_vs_dms.html>`_
+ - `all clade natural enrichment versus DMS <all_natural_enrichment_vs_dms.html>`_
+ - `21K clade natural enrichment versus DMS <21K_natural_enrichment_vs_dms.html>`_
