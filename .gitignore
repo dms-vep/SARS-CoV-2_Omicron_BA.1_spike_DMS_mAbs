@@ -48,4 +48,4 @@ results/antibody_escape/*
 !results/antibody_escape/*.csv
 !results/compare_muteffects
 results/compare_muteffects/*
-!results/compare_muteffects/natural_enrichment_vs_dms.csv
+!results/compare_muteffects/*natural_enrichment_vs_dms.csv
